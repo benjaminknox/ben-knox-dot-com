@@ -15,16 +15,22 @@
 		"@sveltejs/adapter-auto": "^6.0.0",
 		"@sveltejs/kit": "^2.16.0",
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
+		"@types/find-node-modules": "^2.1.2",
+		"@types/node": "^24.0.3",
+		"find-node-modules": "^2.1.3",
 		"sass-embedded": "^1.89.1",
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
 		"typescript": "^5.0.0",
-		"vite": "^6.2.6",
-		"@types/find-node-modules": "^2.1.2",
-		"find-node-modules": "^2.1.3"
+		"vite": "^6.2.6"
 	},
 	"dependencies": {
-		"@awenovations/aura": "^0.0.41",
-		"svelte-portal": "^2.2.1"
+		"@awenovations/aura": "^0.0.42",
+		"@lucia-auth/adapter-mongodb": "^1.0.3",
+		"lucia": "^3.2.2",
+		"qs": "^6.14.0",
+		"quill": "^2.0.3",
+		"svelte-portal": "^2.2.1",
+		"uuid": "^11.1.0"
 	}
 }

@@ -4,13 +4,13 @@
   import { page } from '$app/stores';
   import type { LayoutProps } from './$types';
   import Icon from '@awenovations/aura/icon.svelte'
+	import Dialog from '@awenovations/aura/dialog.svelte';
+	import { dialogStore } from '$lib/stores/dialog.store';
 
   let { children, data } : LayoutProps = $props();
 </script>
 
 <style lang="scss">
-  @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
-
   $platinum: #E9E9E9;
   $licorice: #2A211C;
   $raisin-black: #18191F;
@@ -130,7 +130,20 @@
     footer {
       border-top: 1px solid rgba($raisin-black, 0.25);
       margin-top: 1.25rem;
+      padding-bottom: 3.3125rem;
       color: var(--color-raisin-black);
+
+      .topics-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        a {
+          font-size: 14px;
+          font-style: italic;
+          width: calc(50% - 1rem);
+        }
+      }
 
       section.content-wrapper {
         max-width: 62.625rem;
@@ -144,13 +157,34 @@
             align-items: center;
           }
 
-          p {
+          p, .social-media {
             color: rgba($raisin-black, 0.75);
             font-family: Jost;
             font-size: 14px;
             font-style: italic;
             font-weight: 400;
-            line-height: 35px;
+            line-height: 2.188rem;
+          }
+
+          .social-media {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+
+            a {
+              text-decoration: none;
+              display: flex;
+              line-height: 1.375rem;
+              gap: 0.3rem;
+
+              &:hover {
+                text-decoration: underline;
+              }
+
+              :global(.aura-icon .icon) {
+                background: rgba($raisin-black, 0.75);
+              }
+            }
           }
 
           flex: 1;
@@ -160,6 +194,25 @@
       }
     }
   }
+
+	:global(.floating-dialog) {
+		position: absolute;
+		top: 43%;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 1001;
+	}
+
+	:global(.backdrop) {
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: rgba(0, 0, 0, 40%);
+		backdrop-filter: blur(0.2rem);
+		height: 100%;
+		width: 100%;
+		z-index: 1000;
+	}
 </style>
 
 <section class="wrapper">
@@ -167,8 +220,15 @@
     <header>
       <h1><a href="/">Code With Ben Knox</a></h1>
       <nav>
-        <a class:active={$page.url.pathname === '/topics'} href="/topics">Topics</a>
-        <a class:active={$page.url.pathname === '/about'} href="/about">About</a>
+        <a class:active={$page.url.pathname === '/topics'} href="/topics" data-sveltekit-reload>Topics</a>
+        <a class:active={$page.url.pathname === '/about'} href="/about" data-sveltekit-reload>About</a>
+        {#if data.authenticated}
+          <a class:active={$page.url.pathname === '/admin/post'} href="/admin/post" data-sveltekit-reload>Add Post</a>
+          <a class:active={$page.url.pathname === '/admin/posts/drafts'} href="/admin/posts/drafts" data-sveltekit-reload>Drafts</a>
+          <a class:active={$page.url.pathname === '/admin/posts'} href="/admin/posts" data-sveltekit-reload>Posts</a>
+          <a href="/signout" data-sveltekit-reload>Sign Out</a>
+        {:else}
+        {/if}
       </nav>
     </header>
     <section id="hero"></section>
@@ -176,17 +236,35 @@
   </section>
   <footer>
     <section class="content-wrapper">
-      <section><h6>Topics</h6></section>
+      <section>
+        <h6>Topics</h6>
+        <div class="topics-list">
+          {#each data.topics as topic}
+            <a>{topic.name}</a>
+          {/each}
+        </div>
+      </section>
       <section>
         <h6>About the Author</h6>
         <p>
         Ben Knox, a passionate tech enthusiast and your trusted coding companion, is here to simplify the intricate world of software and technology. Join us on this journey as we decode, create, and explore the endless possibilities of code together.
         </p>
         <div class="social-media">
-          <div class="linkedin"><Icon name="linkedin" /></div>
-          <div class="github"></div>
+          <a class="icon" target="blank" href="https://www.linkedin.com/in/benjaminknox1"><Icon name="linkedin" />benjaminknox1</a>
+          <a class="icon" target="blank" href="https://github.com/benjaminknox"><Icon name="github" />benjaminknox</a>
         </div>
       </section>
     </section>
   </footer>
 </section>
+
+{#if $dialogStore.open}
+  <Dialog
+    class="floating-dialog"
+    confirmText={$dialogStore.confirmText}
+    cancelText={$dialogStore.cancelText}
+    onCancel={$dialogStore.handleCancel}
+    onConfirm={$dialogStore.handleConfirm}>{$dialogStore.message}</Dialog
+  >
+  <div class="backdrop"></div>
+{/if}
