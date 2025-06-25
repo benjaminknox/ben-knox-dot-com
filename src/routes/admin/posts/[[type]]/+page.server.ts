@@ -11,7 +11,7 @@ export const load: PageServerLoad = async ({ cookies, url, params }) => {
 	}
 
   const page = Number(url.searchParams.get('page')) || 1;
-  const limit = Number(url.searchParams.get('limit')) || 10;
+  const limit = Number(url.searchParams.get('limit')) || 16;
   const offset = (page - 1) * limit;
   
   const { type = 'published'} = params;

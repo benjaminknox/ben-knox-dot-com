@@ -4,6 +4,7 @@
   import { page } from '$app/stores';
   import type { LayoutProps } from './$types';
   import Icon from '@awenovations/aura/icon.svelte'
+	import Toast from '@awenovations/aura/toast.svelte';
 	import Dialog from '@awenovations/aura/dialog.svelte';
 	import { dialogStore } from '$lib/stores/dialog.store';
 
@@ -17,12 +18,17 @@
   $slate-gray: #5F7589;
   $brown-sugar: #B97257;
 
-  :root {
+  :global(:root) {
     --color-platinum: #E9E9E9;
     --color-licorice: #2A211C;
     --color-raisin-black: #18191F;
     --color-slate-gray: #5F7589;
     --color-brown-sugar: #B97257;
+
+    --color-platinum-10: #D9D9D9;
+    --color-platinum-20: #BFBFBF;
+
+    --color-silver: #A9A9AA;
   }
 
   :global(html, body) {
@@ -268,3 +274,5 @@
   >
   <div class="backdrop"></div>
 {/if}
+
+<Toast />

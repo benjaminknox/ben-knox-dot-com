@@ -1,13 +1,14 @@
 <script lang="ts">
   import 'quill/dist/quill.snow.css';
-	import { enhance } from '$app/forms';
+  import { enhance } from '$app/forms';
   import { invalidateAll, goto } from '$app/navigation';
-	import Button from '@awenovations/aura/button.svelte';
+  import Button from '@awenovations/aura/button.svelte';
   import Dialog from '@awenovations/aura/dialog.svelte';
-	import Dropdown from '@awenovations/aura/dropdown.svelte';
-	import TextField from '@awenovations/aura/text-field.svelte';
+  import Dropdown from '@awenovations/aura/dropdown.svelte';
+  import { showToast } from '@awenovations/aura/toast.store';
+  import TextField from '@awenovations/aura/text-field.svelte';
 
-	let { data } = $props();
+  let { data } = $props();
 
   let saving = $state(null);
   let dialogOpen = $state(false);
@@ -51,13 +52,13 @@
   }
 
   const saveTopic = async () => {
-		await fetch(`/api/topics`, {
-			method: 'POST',
+    await fetch(`/api/topics`, {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({name: newTopicName}),
-		});
+    });
 
     invalidateAll();
 
@@ -88,8 +89,18 @@
   const onSubmit = (event: HTMLEvent) => {
     saving = event.submitter.getAttribute("name");
 
-		return async ({ result }) => {
+    return async ({ result }) => {
       saving = null;
+
+      const type = event.submitter.getAttribute('name');
+
+      const message = type === 'draft' ? 'Draft saved' : 'Post published';
+
+      showToast({
+        severity: 'success',
+        message,
+      });
+
       goto(`/admin/post/${result.data._id}`)
     }
   }
