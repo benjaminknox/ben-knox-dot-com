@@ -1,7 +1,8 @@
 <script lang="ts">
   import SignIn from '$lib/signin/signin.svelte';
 	import { enhance, applyAction } from '$app/forms';
-  import { invalidateAll } from '$app/navigation';
+  import { goto, invalidateAll } from '$app/navigation';
+  import { showToast } from '@awenovations/aura/toast.store';
 
   let loading = $state(false);
 
@@ -9,11 +10,25 @@
 		loading = true;
 
 		return async ({ result }) => {
+      const { type, data } = result;
+      const { message } = data || {};
 			loading = false;
 
-      await applyAction(result);
+      if(type === 'failure') {
+        showToast({
+          severity: 'error',
+          message,
+        });
+      } else {
+        invalidateAll();
 
-      invalidateAll();
+        showToast({
+          severity: 'success',
+          message: "Signed in!",
+        });
+
+        await applyAction(result);
+      } 
 		};
 	}
 </script>

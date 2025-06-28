@@ -8,7 +8,7 @@
     }>>
 	}
 
-	let { posts, admin }: Props = $props();
+	let { posts, admin = false }: Props = $props();
 </script>
 
 <div class="posts">

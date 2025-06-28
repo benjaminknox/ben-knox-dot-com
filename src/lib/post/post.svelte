@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { goto } from '$app/navigation';
+
 	interface Props {
     post: Partial<{
       _id: string;
@@ -8,12 +10,15 @@
 
 	let { post, admin }: Props = $props();
 
+  const openPost = () => {
+    goto(`${admin ? '/admin' : ''}/post/${post._id}`);
+  }
 </script>
 
-<a href={`${admin ? '/admin' : ''}/post/${post._id}`} class="post-card">
+<div onclick={openPost} class="post-card">
   <image src={`/admin/post/${post._id}/image.jpg`} />
   <div class="title">{post.title}</div>
-</a>
+</div>
 
 <style lang="scss">
   .post-card {
