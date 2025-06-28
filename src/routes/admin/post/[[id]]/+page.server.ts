@@ -78,10 +78,6 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
 
 	const client = (await mongoDbClient).db();
 
-	const collection = client.collection('topics');
-
-  const topics = await collection.find().toArray();
-
 	const posts = client.collection('posts');
 
   let post : any = {};
@@ -93,7 +89,6 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
   }
 
   return {
-    topics,
     post,
   }
 };
