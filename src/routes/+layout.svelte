@@ -29,6 +29,7 @@
     --color-platinum-20: #BFBFBF;
 
     --color-silver: #A9A9AA;
+    --color-champagne-pink: #EAD5CD;
   }
 
   :global(html, body) {
@@ -130,6 +131,10 @@
 
       :global(> .hero-content) {
         flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
     }
 

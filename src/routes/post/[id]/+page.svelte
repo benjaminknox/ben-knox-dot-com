@@ -1,11 +1,14 @@
 <script lang="ts">
+  import { portal } from "svelte-portal";
+
   let { data } = $props();
 </script>
 
+<div use:portal={"section#hero"} class="hero-content header">
+  <image class="image-preview" src={`/admin/post/${data.post._id}/image.jpg`} />
+</div>
+
 <div class="wrapper">
-  <div class="header">
-    <image class="image-preview" src={`/admin/post/${data.post._id}/image.jpg`} />
-  </div>
   <h1 class="title">{data.post.title}</h1>
   <h2 class="title">{data.post.topic}</h2>
   <div class="post-body">
@@ -15,7 +18,6 @@
 
 <style lang="scss">
   .header {
-    height: 29.25rem;
     overflow: hidden;
     position: relative;
 
