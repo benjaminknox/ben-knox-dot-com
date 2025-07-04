@@ -1,6 +1,11 @@
 <script lang="ts">
   import { portal } from "svelte-portal";
+  import Posts from '$lib/posts/posts.svelte';
   import HorizontalRule from '$lib/HorizontalRule/HorizontalRule.svelte';
+
+	let { data } = $props();
+
+  let { posts } = data;
 </script>
 
 <div use:portal={"section#hero"} class="hero-content">
@@ -11,6 +16,8 @@
 <HorizontalRule>
   Latest Blogs
 </HorizontalRule>
+
+<Posts {posts} />
 
 <style lang="scss">
   .hero-content {

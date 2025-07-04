@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { goto } from '$app/navigation';
+  import { goto, invalidateAll } from '$app/navigation';
 
 	interface Props {
     post: Partial<{
@@ -10,15 +10,18 @@
 
 	let { post, admin }: Props = $props();
 
-  const openPost = () => {
-    goto(`${admin ? '/admin' : ''}/post/${post._id}`);
-  }
+  //const openPost = () => {
+  //  goto();
+  //  invalidateAll();
+  //}
 </script>
 
-<div onclick={openPost} class="post-card">
-  <image src={`/admin/post/${post._id}/image.jpg`} />
-  <div class="title">{post.title}</div>
-</div>
+<a href={`${admin ? '/admin' : ''}/post/${post._id}`} data-sveltekit-reload>
+  <div class="post-card">
+    <image src={`/admin/post/${post._id}/image.jpg`} />
+    <div class="title">{post.title}</div>
+  </div>
+</a>
 
 <style lang="scss">
   .post-card {

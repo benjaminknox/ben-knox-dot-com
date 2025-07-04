@@ -229,7 +229,7 @@
 <section class="wrapper">
   <section class="main-content">
     <header>
-      <h1><a href="/">Code With Ben Knox</a></h1>
+      <h1><a href="/" data-sveltekit-reload>Code With Ben Knox</a></h1>
       <nav>
         <a class:active={$page.url.pathname === '/topics'} href="/topics" data-sveltekit-reload>Topics</a>
         <a class:active={$page.url.pathname === '/about'} href="/about" data-sveltekit-reload>About</a>
