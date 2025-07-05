@@ -125,19 +125,6 @@
       }
     }
 
-    section#hero {
-      :global(> *) { height: 29.25rem; }
-      display: flex;
-
-      :global(> .hero-content) {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-    }
-
     footer {
       border-top: 1px solid rgba($raisin-black, 0.25);
       margin-top: 1.25rem;
@@ -242,7 +229,6 @@
         {/if}
       </nav>
     </header>
-    <section id="hero"></section>
     {@render children()}
   </section>
   <footer>

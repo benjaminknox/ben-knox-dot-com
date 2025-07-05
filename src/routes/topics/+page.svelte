@@ -5,9 +5,13 @@
 </style>
 
 <script lang="ts">
-  import { portal } from "svelte-portal";
+  import Hero from '$lib/hero/hero.svelte';
 </script>
 
-<div use:portal={"section#hero"} class="hero-content"></div>
+<Hero bgColor="rgba(95, 117, 137, 0.25)">
+  <h1>List of Topics</h1>
+  <div class="tagline">
+    20 Topics
+  </div>
+</Hero>
 
-<h3>Topics</h3>
