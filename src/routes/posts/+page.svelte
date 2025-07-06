@@ -1,51 +1,45 @@
 <script lang="ts">
   import Hero from '$lib/hero/hero.svelte';
   import Posts from '$lib/posts/posts.svelte';
+  import Pagination from '$lib/posts/pagination.svelte';
+  import PostsFilter from '$lib/posts/posts-filter.svelte';
   import HorizontalRule from '$lib/HorizontalRule/HorizontalRule.svelte';
 
 	let { data } = $props();
-
-  let { posts } = data;
 </script>
 
-<Hero bgColor="rgba(185, 114, 87, 0.25);">
+<Hero bgColor="rgba(95, 117, 137, 0.25)">
   <div class="icon"></div>
-  <h1>Code With Ben Knox</h1>
+  <h1>Search Posts</h1>
   <div class="tagline">
-    A Blog About Software
+    {data.totalPosts} Post{data.totalPosts !== 1 ? 's' : ''}
   </div>
 </Hero>
 
 <HorizontalRule>
-  Latest Blogs
+  Latest
 </HorizontalRule>
 
-<Posts {posts} />
+<div class="wrapper">
+  <PostsFilter {...data} />
 
-<div class="see-more-link">
-<a href="/posts" data-sveltekit-reload>See More →</a>
+  <Posts {...data} admin />
+
+  <Pagination {...data} />
 </div>
 
 <style lang="scss">
   .icon {
     width: 10.125rem;
     height: 9.625rem;
-    background: url('/static/svgs/home/code-symbol.svg');
+    background: url('/static/svgs/posts-list.svg');
     background-repeat: no-repeat;
     background-position: center;
   }
 
-  .see-more-link {
-    width: 100%;
+  .wrapper {
     display: flex;
-    justify-content: right;
-    align-items: center;
-    height: 3.625rem;
-
-    a {
-      font-weight: 200;
-      text-decoration: none;
-    }
+    flex-direction: column;
+    gap: 1.25rem;
   }
 </style>
-

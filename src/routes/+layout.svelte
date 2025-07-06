@@ -218,6 +218,9 @@
     <header>
       <h1><a href="/" data-sveltekit-reload>Code With Ben Knox</a></h1>
       <nav>
+        {#if !data.authenticated}
+          <a class:active={$page.url.pathname === '/posts'} href="/posts" data-sveltekit-reload>Posts</a>
+        {/if}
         <a class:active={$page.url.pathname === '/topics'} href="/topics" data-sveltekit-reload>Topics</a>
         <a class:active={$page.url.pathname === '/about'} href="/about" data-sveltekit-reload>About</a>
         {#if data.authenticated}
@@ -225,7 +228,6 @@
           <a class:active={$page.url.pathname === '/admin/posts/drafts'} href="/admin/posts/drafts" data-sveltekit-reload>Drafts</a>
           <a class:active={$page.url.pathname === '/admin/posts'} href="/admin/posts" data-sveltekit-reload>Posts</a>
           <a href="/signout" data-sveltekit-reload>Sign Out</a>
-        {:else}
         {/if}
       </nav>
     </header>
