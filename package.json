@@ -27,6 +27,7 @@
 	"dependencies": {
 		"@awenovations/aura": "^0.0.42",
 		"@lucia-auth/adapter-mongodb": "^1.0.3",
+		"lodash.debounce": "^4.0.8",
 		"lucia": "^3.2.2",
 		"qs": "^6.14.0",
 		"quill": "^2.0.3",

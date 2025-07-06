@@ -9,11 +9,6 @@
 	}
 
 	let { post, admin }: Props = $props();
-
-  //const openPost = () => {
-  //  goto();
-  //  invalidateAll();
-  //}
 </script>
 
 <a href={`${admin ? '/admin' : ''}/post/${post._id}`} data-sveltekit-reload>

@@ -13,11 +13,16 @@ export const load: PageServerLoad = async ({ cookies, url, params }) => {
 
   const { type = 'published'} = params;
 
+  const { titleFilter = null, topicFilter = null} = Object.fromEntries(url.searchParams.entries());
+
   const client = (await mongoDbClient).db();
 
   const posts = client.collection('posts');
 
-  const query = { published: type === 'published'};
+  let query : Record<string, any> = { ['published']: type === 'published' };
+
+  if(titleFilter) query['title'] = { $regex: new RegExp(decodeURIComponent(titleFilter), 'i') };
+  if(topicFilter) query['topic'] = decodeURIComponent(topicFilter);
 
   const totalPosts = await posts.countDocuments(query);
 
@@ -43,5 +48,5 @@ export const load: PageServerLoad = async ({ cookies, url, params }) => {
     lastPage,
     totalPosts,
     posts: postList,
-  }
+  };
 };

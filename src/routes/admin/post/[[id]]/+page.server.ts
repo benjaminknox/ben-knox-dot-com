@@ -6,7 +6,7 @@ import mongoDbClient from '$lib/db/mongo';
 import type { PageServerLoad } from './$types';
 
 export const actions: Actions = {
-  default: async ({ request }) => {
+  default: async ({ params, request, ...rest }) => {
     const formData = await request.formData() as any;
 
     const data = Object.fromEntries(formData.entries());
@@ -26,7 +26,7 @@ export const actions: Actions = {
       lastUpdatedDate: date,
     }
 
-    body.published = typeof publish !== 'undefined';
+    body.published = typeof draft === "undefined";
 
     if(body.published) {
       body.publishedDate = date;

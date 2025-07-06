@@ -127,7 +127,7 @@
 
     footer {
       border-top: 1px solid rgba($raisin-black, 0.25);
-      margin-top: 1.25rem;
+      margin-top: 3.5rem;
       padding-bottom: 3.3125rem;
       color: var(--color-raisin-black);
 

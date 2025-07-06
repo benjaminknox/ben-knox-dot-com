@@ -42,7 +42,11 @@
   }
 
   h1.title {
+    height: 6.625rem;
     font-size: 2.625rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   h2.title {
@@ -50,6 +54,19 @@
   }
 
   .post-body {
+
+    :global(h1),
+    :global(h2), 
+    :global(h3),
+    :global(h4),
+    :global(h5),
+    :gloabl(h6) {
+      margin-top: 1.875rem;
+      margin-bottom: 1rem;
+    }
+    
+    margin: 0 auto;
+    width: 75%;
     line-height: 200%;
     font-size: 1.5rem;
     font-weight: 300;
