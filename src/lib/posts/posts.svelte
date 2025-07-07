@@ -13,14 +13,15 @@
 
 <div class="posts">
   {#each posts as post}
-    <Post {post} {admin} />
+    <Post {post} />
   {/each}
 </div>
 
 <style lang="scss">
   .posts {
     display: flex;
-    gap: 3.125rem;
+    gap: 3.15rem;
     flex-wrap: wrap;
+    justify-content: space-between;
   }
 </style>

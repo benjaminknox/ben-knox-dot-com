@@ -13,7 +13,9 @@
 
 <a href={`${admin ? '/admin' : ''}/post/${post._id}`} data-sveltekit-reload>
   <div class="post-card">
-    <image src={`/admin/post/${post._id}/image.jpg`} />
+    <div class="image-wrapper">
+      <image src={`/admin/post/${post._id}/image.jpg`} />
+    </div>
     <div class="title">{post.title}</div>
   </div>
 </a>
@@ -35,9 +37,19 @@
       background: var(--color-platinum-20);
     }
 
-    :global(img) {
-      border-bottom: 1px solid var(--color-silver);
+    .image-wrapper {
+      overflow: hidden;
       height: 11.563rem;
+      position: relative;
+      border-bottom: 1px solid var(--color-silver);
+
+      :global(img) {
+        height: 20rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
     }
 
     .title {
@@ -47,6 +59,8 @@
       align-items: center;
       display: flex;
       text-align: center;
+      padding: 1rem;
+      box-sizing: border-box;
     }
   }
 </style>

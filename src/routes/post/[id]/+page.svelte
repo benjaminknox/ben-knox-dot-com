@@ -66,7 +66,7 @@
     }
     
     margin: 0 auto;
-    width: 75%;
+    width: 100%;
     line-height: 200%;
     font-size: 1.5rem;
     font-weight: 300;
