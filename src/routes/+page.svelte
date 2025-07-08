@@ -23,7 +23,7 @@
 <Posts {posts} />
 
 <div class="see-more-link">
-<a href="/posts" data-sveltekit-reload>See More →</a>
+  <a href="/posts" data-sveltekit-reload>See More →</a>
 </div>
 
 <style lang="scss">

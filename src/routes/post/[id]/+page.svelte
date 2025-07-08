@@ -1,5 +1,7 @@
 <script lang="ts">
   import Hero from '$lib/hero/hero.svelte';
+  import Posts from '$lib/posts/posts.svelte';
+  import HorizontalRule from '$lib/HorizontalRule/HorizontalRule.svelte';
 
   let { data } = $props();
 </script>
@@ -14,6 +16,14 @@
   <div class="post-body">
     {@html data.post.content}
   </div>
+</div>
+
+<HorizontalRule>More {data.post.topic}</HorizontalRule>
+
+<Posts posts={data.morePosts} />
+
+<div class="see-more-link">
+  <a href={`/posts?topicFilter=${encodeURIComponent(data.post.topic)}`} data-sveltekit-reload>See More →</a>
 </div>
 
 <style lang="scss">
@@ -93,6 +103,19 @@
 
     :global(h6) {
       font-size: 1.6rem;
+    }
+  }
+
+  .see-more-link {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    height: 3.625rem;
+
+    a {
+      font-weight: 200;
+      text-decoration: none;
     }
   }
 </style>
