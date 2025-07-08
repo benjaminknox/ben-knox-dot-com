@@ -7,8 +7,9 @@ export const load = async () => {
       'phc_gYcgSwoPcq2oz7F9Byq7N4pVCPS1WsfMKuqXplmoDVs',
       {
         api_host: '/relay-oDVs',
-        defaults: '2025-05-24',
-        person_profiles: 'identified_only',
+        ui_host: 'https://us.posthog.com',
+        person_profiles: 'always',
+        persistence: 'localStorage'
       }
     )
   }
