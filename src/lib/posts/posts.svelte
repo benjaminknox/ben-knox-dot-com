@@ -20,8 +20,7 @@
 <style lang="scss">
   .posts {
     display: flex;
-    gap: 3.15rem;
+    gap: 3.37rem;
     flex-wrap: wrap;
-    justify-content: space-between;
   }
 </style>

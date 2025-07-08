@@ -1,9 +1,9 @@
 import { v4 as uuidv4 } from 'uuid';
 import type { Actions } from './$types';
 import { redirect } from '@sveltejs/kit';
-import { lucia } from '$lib/server/auth';
 import mongoDbClient from '$lib/db/mongo';
 import type { PageServerLoad } from './$types';
+import { lucia, validateUserAndGetDetails  } from '$lib/server/auth';
 
 export const actions: Actions = {
   default: async ({ params, request, ...rest }) => {
@@ -71,6 +71,12 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
 	const sessionId = cookies.get(lucia.sessionCookieName);
 
 	if (!sessionId) {
+    return redirect(307, '/signin');
+	}
+
+  const session = sessionId ? await validateUserAndGetDetails(sessionId) : null;
+
+	if (!session) {
     return redirect(307, '/signin');
 	}
 

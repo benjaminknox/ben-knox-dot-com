@@ -32,7 +32,7 @@
   .icon {
     width: 10.125rem;
     height: 9.625rem;
-    background: url('/static/svgs/posts-list.svg');
+    background: url('/svgs/posts-list.svg');
     background-repeat: no-repeat;
     background-position: center;
   }
