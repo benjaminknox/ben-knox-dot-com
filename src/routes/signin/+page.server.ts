@@ -24,6 +24,8 @@ export const actions: Actions = {
 		const response = await authenticateWithKeycloak(email, password);
 
 		if (!response.ok) {
+      console.error(response);
+
 			return fail(400, {
 				message: 'Incorrect username or password'
 			});

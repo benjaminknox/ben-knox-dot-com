@@ -17,7 +17,7 @@ spec:
           envFrom:
           - secretRef:
               name: ben-knox-dot-com-env
-          image: ghcr.io/benjaminknox/ben-knox-dot-com:5e41786
+          image: ghcr.io/benjaminknox/ben-knox-dot-com:fdab1a6
           imagePullPolicy: Always
           ports:
           - containerPort: 3000
