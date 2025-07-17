@@ -26,7 +26,7 @@
       modules: {
         toolbar: [
           [{ header: [1, 2, false] }],
-          ['bold', 'italic', 'underline']
+          ['bold', 'italic', 'underline', 'link']
         ]
       }
     });

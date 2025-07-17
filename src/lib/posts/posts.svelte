@@ -13,7 +13,7 @@
 
 <div class="posts">
   {#each posts as post}
-    <Post {post} />
+    <Post {post} {admin} />
   {/each}
 </div>
 

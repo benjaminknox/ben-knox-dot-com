@@ -23,7 +23,7 @@
 <div class="wrapper">
   <PostsFilter {...data} />
 
-  <Posts {...data} admin />
+  <Posts {...data} />
 
   <Pagination {...data} />
 </div>
