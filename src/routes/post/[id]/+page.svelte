@@ -18,13 +18,15 @@
   </div>
 </div>
 
-<HorizontalRule>More {data.post.topic}</HorizontalRule>
+{#if data.morePosts.length > 0}
+  <HorizontalRule>More {data.post.topic}</HorizontalRule>
 
-<Posts posts={data.morePosts} />
+  <Posts posts={data.morePosts} />
 
-<div class="see-more-link">
-  <a href={`/posts?topicFilter=${encodeURIComponent(data.post.topic)}`} data-sveltekit-reload>See More →</a>
-</div>
+  <div class="see-more-link">
+    <a href={`/posts?topicFilter=${encodeURIComponent(data.post.topic)}`} data-sveltekit-reload>See More →</a>
+  </div>
+{/if}
 
 <style lang="scss">
   :global(.header) {
