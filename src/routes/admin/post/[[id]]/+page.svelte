@@ -21,13 +21,42 @@
   $effect(async () => {
     const Quill = (await import('quill')).default
 
+    const BlockEmbed = Quill.import('blots/block/embed');
+
+    class GitHubEmbed extends BlockEmbed {
+      static create(url) {
+        const node = super.create();
+        node.innerHTML = `<iframe credentialless frameborder="0" scrolling="no" style="width:100%; height:1171px;" allow="clipboard-write" src="https://emgithub.com/iframe.html?target=${encodeURIComponent(url)}&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></iframe>`;
+        return node;
+      }
+
+      static value(node) {
+        return node.querySelector('iframe')?.getAttribute('src');
+      }
+    }
+
+    GitHubEmbed.blotName = 'github-embed';
+    GitHubEmbed.tagName = 'div';
+    GitHubEmbed.className = 'github-embed';
+
+    Quill.register(GitHubEmbed);
+
     const quill = new Quill('#editor', {
       theme: 'snow',
       modules: {
-        toolbar: [
-          [{ header: [1, 2, false] }],
-          ['bold', 'italic', 'underline', 'link']
-        ]
+        toolbar: {
+          container: '#toolbar',
+          handlers: {
+            embedGitHub: function () {
+              const url = prompt('Enter a GitHub file URL:');
+              if (url) {
+                const range = this.quill.getSelection(true);
+                this.quill.insertEmbed(range.index, 'github-embed', url, Quill.sources.USER);
+                this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
+              }
+            }
+          }
+        }
       }
     });
 
@@ -143,6 +172,23 @@
           <input bind:this={imageInput} onchange={showImage} type="file" name="image" class="image-upload" accept="image/jpeg" />
       </div>
       <div class="editor-container">
+<div id="toolbar">
+  <span class="ql-formats">
+    <select class="ql-header">
+      <option selected></option>
+      <option value="1"></option>
+      <option value="2"></option>
+    </select>
+  </span>
+  <span class="ql-formats">
+    <button class="ql-bold"></button>
+    <button class="ql-italic"></button>
+    <button class="ql-underline"></button>
+    <button class="ql-link"></button>
+    <button class="ql-code-block"></button>
+    <button class="ql-embedGitHub">GH</button> <!-- custom button -->
+  </span>
+</div>
         <div id="editor"></div>
         <input type="hidden" name="content" id="content" bind:this={content} />
       </div>

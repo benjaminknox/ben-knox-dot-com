@@ -28,6 +28,9 @@
     --color-platinum-10: #D9D9D9;
     --color-platinum-20: #BFBFBF;
 
+    --color-onyx: #3B3D49;
+    --color-paynes-gray: #646779;
+
     --color-silver: #A9A9AA;
     --color-champagne-pink: #EAD5CD;
   }
