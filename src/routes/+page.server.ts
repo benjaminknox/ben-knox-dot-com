@@ -6,7 +6,7 @@ export const load: PageServerLoad = async () => {
 
   const posts = client.collection('posts');
 
-  const postList = await posts.find({ published: true }).limit(8).toArray();
+  const postList = await posts.find({ published: true }).sort({publishedDate: -1}).limit(8).toArray();
 
   return {
     posts: postList,

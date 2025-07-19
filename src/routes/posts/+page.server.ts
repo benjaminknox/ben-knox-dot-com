@@ -29,7 +29,7 @@ export const load: PageServerLoad = async ({ url }) => {
     totalPosts,
   );
 
-  const postList = await posts.find(query).skip(offset).limit(limit).toArray();
+  const postList = await posts.find(query).sort({publishedDate: -1}).skip(offset).limit(limit).toArray();
 
   return {
     page,
