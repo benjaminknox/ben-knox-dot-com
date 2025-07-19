@@ -8,7 +8,7 @@
     }>
 	}
 
-	let { post, admin }: Props = $props();
+	let { post, admin = false }: Props = $props();
 </script>
 
 <a href={`${admin ? '/admin' : ''}/post/${post._id}`} data-sveltekit-reload>

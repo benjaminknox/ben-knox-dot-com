@@ -1,7 +1,9 @@
 import type { Handle } from '@sveltejs/kit';
+import { sequence } from '@sveltejs/kit/hooks';
 
 
-export const handle: Handle = async ({ event, resolve }) => {
+export const handle: Handle = sequence(
+  async ({ event, resolve }) => {
     const { pathname } = event.url;
 
     if (pathname.startsWith('/relay-oDVs')) {
@@ -35,5 +37,12 @@ export const handle: Handle = async ({ event, resolve }) => {
 
     const response = await resolve(event);
     return response;
-};
+  },
+  async ({ event, resolve }) => {
+    const response = await resolve(event);
+    response.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
+    response.headers.set('Cross-Origin-Embedder-Policy', 'require-corp');
+    return response;
+  }
+);
 
