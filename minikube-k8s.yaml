@@ -17,7 +17,7 @@ spec:
           envFrom:
           - secretRef:
               name: ben-knox-dot-com-env
-          image: ghcr.io/benjaminknox/ben-knox-dot-com:c27ece0
+          image: ghcr.io/benjaminknox/ben-knox-dot-com:10fdd25
           imagePullPolicy: Always
           ports:
           - containerPort: 3000
@@ -38,11 +38,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ben-knox-dot-com-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: ca-issuer
 spec:
   tls:
   - hosts:
     - ben-knox.com.local
-    secretName: ben-knox-dot-com-tls-secret
+    secretName: ben-knox-dot-com-local-tls-secret
   rules:
     - host: "ben-knox.com.local"
       http:
