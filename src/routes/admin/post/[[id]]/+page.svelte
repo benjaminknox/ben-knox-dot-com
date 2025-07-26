@@ -26,7 +26,7 @@
     class GitHubEmbed extends BlockEmbed {
       static create(url) {
         const node = super.create();
-        node.innerHTML = `<iframe credentialless frameborder="0" scrolling="no" style="width:100%; height:1171px;" allow="clipboard-write" src="https://emgithub.com/iframe.html?target=${encodeURIComponent(url)}&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></iframe>`;
+        node.innerHTML = `<script src="https://emgithub.ben-knox.com/embed-v2.js?target=${encodeURIComponent(url)}&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"><\/script>`;
         return node;
       }
 
@@ -172,23 +172,23 @@
           <input bind:this={imageInput} onchange={showImage} type="file" name="image" class="image-upload" accept="image/jpeg" />
       </div>
       <div class="editor-container">
-<div id="toolbar">
-  <span class="ql-formats">
-    <select class="ql-header">
-      <option selected></option>
-      <option value="1"></option>
-      <option value="2"></option>
-    </select>
-  </span>
-  <span class="ql-formats">
-    <button class="ql-bold"></button>
-    <button class="ql-italic"></button>
-    <button class="ql-underline"></button>
-    <button class="ql-link"></button>
-    <button class="ql-code-block"></button>
-    <button class="ql-embedGitHub">GH</button> <!-- custom button -->
-  </span>
-</div>
+        <div id="toolbar">
+          <span class="ql-formats">
+            <select class="ql-header">
+              <option selected></option>
+              <option value="1"></option>
+              <option value="2"></option>
+            </select>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-bold"></button>
+            <button class="ql-italic"></button>
+            <button class="ql-underline"></button>
+            <button class="ql-link"></button>
+            <button class="ql-code-block"></button>
+            <button class="ql-embedGitHub">GH</button> 
+          </span>
+        </div>
         <div id="editor"></div>
         <input type="hidden" name="content" id="content" bind:this={content} />
       </div>
