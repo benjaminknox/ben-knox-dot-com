@@ -26,7 +26,7 @@
     class GitHubEmbed extends BlockEmbed {
       static create(url) {
         const node = super.create();
-        node.innerHTML = `<script src="https://emgithub.ben-knox.com/embed-v2.js?target=${encodeURIComponent(url)}&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"><\/script>`;
+        node.innerHTML = `<script src="https://emgithub.ben-knox.com/embed-v2.js?target=${encodeURIComponent(url)}&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=off&showFullPath=off&showCopy=on"><\/script>`;
         return node;
       }
 
@@ -297,5 +297,21 @@
   :global(.aura-text-field-wrapper) {
     flex: 1;
     max-width: unset!important;
+  }
+
+  :global(.github-embed) {
+    width: 100%;
+    height: 2rem;
+    background: var(--color-platinum);
+    border: 1px solid var(--color-platinum-10);
+    border-radius: 0.25rem;
+  }
+
+  :global(.github-embed::after) {
+    content: "Code block (Preview page to see the value)";
+    display: block;
+    line-height: 1.5rem;
+    color: var(--color-raisin-black);
+    padding: 0.25rem;
   }
 </style>
