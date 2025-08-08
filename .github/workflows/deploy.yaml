@@ -9,9 +9,6 @@ on:
 jobs:
   deploy-to-k8s:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write 
 
     steps:
       - name: Checkout repository
