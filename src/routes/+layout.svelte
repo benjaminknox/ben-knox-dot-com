@@ -254,6 +254,7 @@
         <div class="social-media">
           <a class="icon" target="blank" href="https://www.linkedin.com/in/benjaminknox1"><Icon name="linkedin" />benjaminknox1</a>
           <a class="icon" target="blank" href="https://github.com/benjaminknox"><Icon name="github" />benjaminknox</a>
+          <a class="icon" target="blank" href="https://x.com/benjaminpknox"><Icon name="x" />benjaminpknox</a>
         </div>
       </section>
     </section>
