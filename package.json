@@ -27,7 +27,7 @@
 		"vite-plugin-static-copy": "^3.1.1"
 	},
 	"dependencies": {
-		"@awenovations/aura": "^0.0.42",
+		"@awenovations/aura": "^0.0.43",
 		"@lucia-auth/adapter-mongodb": "^1.0.3",
 		"express": "^5.1.0",
 		"lodash.debounce": "^4.0.8",
