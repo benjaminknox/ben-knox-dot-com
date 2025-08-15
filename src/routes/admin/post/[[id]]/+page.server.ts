@@ -4,6 +4,7 @@ import { redirect } from '@sveltejs/kit';
 import mongoDbClient from '$lib/db/mongo';
 import type { PageServerLoad } from './$types';
 import { lucia, validateUserAndGetDetails  } from '$lib/server/auth';
+import { createSlug } from '$lib/posts/create-slug';
 
 export const actions: Actions = {
   default: async ({ params, request, ...rest }) => {
@@ -24,6 +25,7 @@ export const actions: Actions = {
     let body : any = {
       ...post,
       lastUpdatedDate: date,
+      slug: createSlug(post.title)
     }
 
     body.published = typeof draft === "undefined";
