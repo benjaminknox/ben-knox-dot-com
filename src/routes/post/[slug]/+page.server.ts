@@ -2,7 +2,7 @@ import mongoDbClient from '$lib/db/mongo';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {
-  const { id } = params;
+  const { slug } = params;
 
 	const client = (await mongoDbClient).db();
 
@@ -11,8 +11,8 @@ export const load: PageServerLoad = async ({ params }) => {
   let post : any = {};
   let morePosts : any = {};
 
-  if(id) {
-    const { headerImage: _, ...postData } = await posts.findOne({ _id: id as any }) as any;
+  if(slug) {
+    const { headerImage: _, ...postData } = await posts.findOne({ $or: [{ slug: slug as any }, { _id: slug as any }] }) as any;
 
     post = postData;
 
@@ -22,7 +22,7 @@ export const load: PageServerLoad = async ({ params }) => {
       ['published']: true,
       topic,
       _id: {
-        $ne: post._id
+        $ne: post.id
       }
     };
 
