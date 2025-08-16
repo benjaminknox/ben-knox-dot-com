@@ -1,10 +1,21 @@
 <script lang="ts">
+  import { page } from '$app/state'
   import Hero from '$lib/hero/hero.svelte';
   import Posts from '$lib/posts/posts.svelte';
   import HorizontalRule from '$lib/HorizontalRule/HorizontalRule.svelte';
 
+
   let { data } = $props();
 </script>
+
+<svelte:head>
+  <meta property="og:title" content={data.post.title}>
+  <meta property="og:image" content={`${page.url.origin}/admin/post/${data.post._id}/image.jpg`}>
+  <meta property="og:url" content={`${page.url.origin}/post/${data.post.slug}`}>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={data.post.title}>
+  <meta name="twitter:image" content={`${page.url.origin}/admin/post/${data.post._id}/image.jpg`}>
+</svelte:head>
 
 <Hero class="header">
   <image class="image-preview" src={`/admin/post/${data.post._id}/image.jpg`} />
