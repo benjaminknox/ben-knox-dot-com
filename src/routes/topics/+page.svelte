@@ -45,6 +45,7 @@
       align-items: center;
       height: 2.5rem;
       min-width: 33.33%;
+      max-width: 33.33%;
       flex: 1;
     }
 
