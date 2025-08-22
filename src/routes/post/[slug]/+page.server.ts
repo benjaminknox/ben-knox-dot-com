@@ -22,7 +22,7 @@ export const load: PageServerLoad = async ({ params }) => {
       ['published']: true,
       topic,
       _id: {
-        $ne: post.id
+        $ne: post._id
       }
     };
 

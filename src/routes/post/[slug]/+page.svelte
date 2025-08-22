@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { page } from '$app/state'
+  import { page } from '$app/state';
+  import { format, fromUnixTime } from 'date-fns';
   import Hero from '$lib/hero/hero.svelte';
   import Posts from '$lib/posts/posts.svelte';
   import HorizontalRule from '$lib/HorizontalRule/HorizontalRule.svelte';
@@ -22,8 +23,15 @@
 </Hero>
 
 <div class="wrapper">
-  <h1 class="title">{data.post.title}</h1>
-  <h2 class="title">{data.post.topic}</h2>
+  <div class="header">
+    <h1 class="title">{data.post.title}</h1>
+    <div class="meta-wrapper">
+      <h2 class="meta">{data.post.topic}</h2>
+      {#if data.post.publishedDate}
+        <h2 class="meta">{format(data.post.publishedDate, 'MMMM do, yyyy')}</h2>
+      {/if}
+    </div>
+  </div>
   <div class="post-body">
     {@html data.post.content}
   </div>
@@ -59,9 +67,23 @@
     gap: 2rem;
   }
 
-  .title {
-    text-align: center;
-    font-weight: 500;
+  .header {
+    .title {
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .meta-wrapper {
+      display: flex;
+      gap: 0.25rem;
+      flex-direction: column;
+
+      .meta {
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 300;
+      }
+    }
   }
 
   h1.title {

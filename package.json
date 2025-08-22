@@ -29,6 +29,7 @@
 	"dependencies": {
 		"@awenovations/aura": "^0.0.43",
 		"@lucia-auth/adapter-mongodb": "^1.0.3",
+		"date-fns": "^4.1.0",
 		"express": "^5.1.0",
 		"lodash.debounce": "^4.0.8",
 		"lucia": "^3.2.2",
