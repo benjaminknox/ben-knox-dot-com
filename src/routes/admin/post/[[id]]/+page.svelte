@@ -13,6 +13,7 @@
   let saving = $state(null);
   let dialogOpen = $state(false);
   let newTopicName = $state("");
+  let topicName = $state(data.post.topic);
   let imageInput : HTMLInputElment;
   let imagePreview : HTMLImageElment;
   let content : HTMLHiddenElment;
@@ -129,8 +130,6 @@
         severity: 'success',
         message,
       });
-
-      goto(`/admin/post/${result.data._id}`)
     }
   }
 </script>
@@ -152,7 +151,8 @@
           {/snippet}
         </TextField>
         <Dropdown
-          currentValue={data.post.topic}
+          currentValue={topicName}
+          on:change={(event) => topicName = event.detail.value}
           required
           name="topic"
           class="topic-dropdown"
