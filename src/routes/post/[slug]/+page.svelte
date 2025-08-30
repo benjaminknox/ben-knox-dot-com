@@ -68,6 +68,7 @@
   }
 
   .header {
+
     .title {
       text-align: center;
       font-weight: 500;
@@ -87,7 +88,7 @@
   }
 
   h1.title {
-    height: 6.625rem;
+    min-height: 6.625rem;
     font-size: 2.625rem;
     display: flex;
     justify-content: center;
@@ -109,11 +110,10 @@
       margin-top: 1.875rem;
       margin-bottom: 1rem;
     }
-    
+
     margin: 0 auto;
     width: 100%;
     line-height: 200%;
-    font-size: 1.5rem;
     font-weight: 300;
 
     :global(h1) {

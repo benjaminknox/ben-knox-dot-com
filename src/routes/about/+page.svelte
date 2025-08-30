@@ -14,8 +14,15 @@
     margin: 2rem 0;
     padding: 0 1.5rem;
 
+    @media screen and (max-width: 63.875rem) {
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
     .me {
-      width: 23.75rem;
+      max-height: 23.75rem;
+      max-width: 23.75rem;
       border-radius: 50%;
     }
 

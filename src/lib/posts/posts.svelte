@@ -22,5 +22,10 @@
     display: flex;
     gap: 3.37rem;
     flex-wrap: wrap;
+
+    @media screen and (max-width: 63.875rem) {
+      justify-content: space-evenly;
+    }
+
   }
 </style>

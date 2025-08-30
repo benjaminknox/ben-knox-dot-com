@@ -43,7 +43,6 @@
     color: var(--color-slate-gray);
     font-family: "Jost", sans-serif;
     background: var(--color-platinum);
-
   }
 
   :global(*) { /* Reset because I'm pulling in aura which defines this as Roboto */
@@ -90,6 +89,10 @@
     section.main-content {
       max-width: 62.625rem;
       margin: 0 auto;
+
+      @media screen and (max-width: 63.875rem) {
+        padding: 1.25rem;
+      }
     }
 
     header  {
@@ -97,12 +100,20 @@
       height: 6.625rem;
       justify-content: space-between;
 
+      @media screen and (max-width: 63.875rem) {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 0.75rem;
+      }
+
       a{
         text-decoration: none;
       }
 
       h1 {
-        width: 47.6%;
+        @media screen and (min-width: 63.875rem) {
+          width: 47.6%;
+        }
         display: flex;
         align-items: center;
       }
@@ -111,12 +122,15 @@
         display: flex;
         flex-direction: row;
 
+        @media screen and (max-width: 63.875rem) {
+          min-height: 4rem;
+        }
+
         a {
           display: flex;
           align-items: center;
           justify-content: center;
           width: 6.25rem;
-
           &:hover {
             background: darken($platinum, 10%);
           }
@@ -133,6 +147,10 @@
       margin-top: 3.5rem;
       padding-bottom: 3.3125rem;
       color: var(--color-raisin-black);
+
+      @media screen and (max-width: 63.875rem) {
+        padding: 1.25rem;
+      }
 
       .topics-list {
         display: flex;
@@ -151,7 +169,18 @@
         margin: 0 auto;
         display: flex;
 
+        @media screen and (max-width: 63.875rem) {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 0.75rem;
+          width: 100%;
+        }
+
         section {
+          @media screen and (max-width: 63.875rem) {
+            width: 100%;
+          }
           h6 {
             height: 6.625rem;
             display: flex;
