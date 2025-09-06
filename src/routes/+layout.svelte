@@ -181,6 +181,7 @@
           @media screen and (max-width: 63.875rem) {
             width: 100%;
           }
+
           h6 {
             height: 6.625rem;
             display: flex;

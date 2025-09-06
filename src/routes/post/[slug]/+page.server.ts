@@ -1,5 +1,7 @@
 import mongoDbClient from '$lib/db/mongo';
+import { validate as validUUID } from 'uuid';
 import type { PageServerLoad } from './$types';
+import { error, redirect } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async ({ params }) => {
   const { slug } = params;
@@ -12,7 +14,19 @@ export const load: PageServerLoad = async ({ params }) => {
   let morePosts : any = {};
 
   if(slug) {
-    const { headerImage: _, ...postData } = await posts.findOne({ $or: [{ slug: slug as any }, { _id: slug as any }] }) as any;
+    post = await posts.findOne({ $or: [{ slug: slug as any }, { _id: slug as any }] }) as any;
+
+    if(!post) {
+      error(404, {
+        message: 'Not found'
+      });
+    }
+
+    if(validUUID(slug)) {
+      redirect(301, `/post/${post.slug}`);
+    }
+
+    const { headerImage: _, ...postData } = post;
 
     post = postData;
 

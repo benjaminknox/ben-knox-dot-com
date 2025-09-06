@@ -1,25 +1,49 @@
 <script lang="ts">
   import { page } from '$app/state';
-  import { format, fromUnixTime } from 'date-fns';
   import Hero from '$lib/hero/hero.svelte';
   import Posts from '$lib/posts/posts.svelte';
+  import { stripHtml } from "string-strip-html";
+  import { format, fromUnixTime } from 'date-fns';
   import HorizontalRule from '$lib/HorizontalRule/HorizontalRule.svelte';
 
-
   let { data } = $props();
+
+  const truncateWords = (text: string, maxWords: number) => {
+    if (typeof text !== 'string' || maxWords <= 0) {
+      return '';
+    }
+
+    const words = text.split(/\s+/);
+
+    if (words.length <= maxWords) {
+      return text;
+    }
+
+    let truncatedWords = words.slice(0, maxWords).join(' ');
+
+    if (truncatedWords.endsWith('.')) {
+       truncatedWords = truncatedWords.slice(0, -1);
+    }
+
+    return truncatedWords + '...';
+  }
+
+  const description = data.post.content ? truncateWords(stripHtml(data.post.content).result, 40) : '';
 </script>
 
 <svelte:head>
   <meta property="og:title" content={data.post.title}>
-  <meta property="og:image" content={`${page.url.origin}/admin/post/${data.post._id}/image.jpg`}>
+  <meta property="og:image" content={`${page.url.origin}/post/${data.post._id}/image.jpg`}>
   <meta property="og:url" content={`${page.url.origin}/post/${data.post.slug}`}>
+  <meta property="og:description" content={description}>
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content={data.post.title}>
-  <meta name="twitter:image" content={`${page.url.origin}/admin/post/${data.post._id}/image.jpg`}>
+  <meta name="twitter:image" content={`${page.url.origin}/post/${data.post._id}/image.jpg`}>
+  <meta name="twitter:description" content={description}>
 </svelte:head>
 
 <Hero class="header">
-  <image class="image-preview" src={`/admin/post/${data.post._id}/image.jpg`} />
+  <image class="image-preview" src={`/post/${data.post._id}/image.jpg`} />
 </Hero>
 
 <div class="wrapper">

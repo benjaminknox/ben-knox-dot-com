@@ -11,10 +11,10 @@
 	let { post, admin = false }: Props = $props();
 </script>
 
-<a href={`${admin ? '/admin' : ''}/post/${post._id}`} data-sveltekit-reload>
+<a href={`${admin ? '/admin' : ''}/post/${admin ? post._id : post.slug}`} data-sveltekit-reload>
   <div class="post-card">
     <div class="image-wrapper">
-      <image src={`/admin/post/${post._id}/image.jpg`} />
+      <image src={`/post/${post._id}/image.jpg`} />
     </div>
     <div class="title">{post.title}</div>
   </div>
