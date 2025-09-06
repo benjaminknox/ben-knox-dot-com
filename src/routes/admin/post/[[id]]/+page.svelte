@@ -67,7 +67,7 @@
 
     if(data.post._id) {
       quill.root.innerHTML = data.post.content;
-      imagePreview.src = `/admin/post/${data.post._id}/image.jpg`;
+      imagePreview.src = `/post/${data.post._id}/image.jpg`;
       showImages = true;
     }
   });
