@@ -62,13 +62,15 @@
 </div>
 
 {#if data.morePosts.length > 0}
-  <HorizontalRule>More {data.post.topic}</HorizontalRule>
+  <HorizontalRule>More About {data.post.topic}</HorizontalRule>
 
   <Posts posts={data.morePosts} />
 
-  <div class="see-more-link">
-    <a href={`/posts?topicFilter=${encodeURIComponent(data.post.topic)}`} data-sveltekit-reload>See More →</a>
-  </div>
+  {#if data.allPostsInCategory > 4}
+    <div class="see-more-link">
+      <a href={`/posts?topicFilter=${encodeURIComponent(data.post.topic)}`} data-sveltekit-reload>See More →</a>
+    </div>
+  {/if}
 {/if}
 
 <style lang="scss">
