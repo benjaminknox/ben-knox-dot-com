@@ -14,62 +14,72 @@
   let dialogOpen = $state(false);
   let newTopicName = $state("");
   let topicName = $state(data.post.topic);
-  let imageInput : HTMLInputElment;
-  let imagePreview : HTMLImageElment;
-  let content : HTMLHiddenElment;
+  let imageInput : HTMLInputElement;
+  let imagePreview : HTMLImageElement;
+  let content : HTMLHiddenElement;
   let showImages = $state(false);
 
-  $effect(async () => {
-    const Quill = (await import('quill')).default
+  $effect(() => {
+    let quill;
 
-    const BlockEmbed = Quill.import('blots/block/embed');
+    (async () => {
+      const Quill = (await import('quill')).default
 
-    class GitHubEmbed extends BlockEmbed {
-      static create(url) {
-        const node = super.create();
-        node.innerHTML = `<script src="https://emgithub.ben-knox.com/embed-v2.js?target=${encodeURIComponent(url)}&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=off&showFullPath=off&showCopy=on"><\/script>`;
-        return node;
+      const BlockEmbed = Quill.import('blots/block/embed');
+
+      class GitHubEmbed extends BlockEmbed {
+        static create(url) {
+          const node = super.create();
+          node.innerHTML = `<script src="https://emgithub.ben-knox.com/embed-v2.js?target=${encodeURIComponent(url)}&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=off&showFullPath=off&showCopy=on"><\/script>`;
+          return node;
+        }
+
+        static value(node) {
+          return node.querySelector('iframe')?.getAttribute('src');
+        }
       }
 
-      static value(node) {
-        return node.querySelector('iframe')?.getAttribute('src');
-      }
-    }
+      GitHubEmbed.blotName = 'github-embed';
+      GitHubEmbed.tagName = 'div';
+      GitHubEmbed.className = 'github-embed';
 
-    GitHubEmbed.blotName = 'github-embed';
-    GitHubEmbed.tagName = 'div';
-    GitHubEmbed.className = 'github-embed';
+      Quill.register(GitHubEmbed);
 
-    Quill.register(GitHubEmbed);
-
-    const quill = new Quill('#editor', {
-      theme: 'snow',
-      modules: {
-        toolbar: {
-          container: '#toolbar',
-          handlers: {
-            embedGitHub: function () {
-              const url = prompt('Enter a GitHub file URL:');
-              if (url) {
-                const range = this.quill.getSelection(true);
-                this.quill.insertEmbed(range.index, 'github-embed', url, Quill.sources.USER);
-                this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
+      quill = new Quill('#editor', {
+        theme: 'snow',
+        modules: {
+          toolbar: {
+            container: '#toolbar',
+            handlers: {
+              embedGitHub: function () {
+                const url = prompt('Enter a GitHub file URL:');
+                if (url) {
+                  const range = this.quill.getSelection(true);
+                  this.quill.insertEmbed(range.index, 'github-embed', url, Quill.sources.USER);
+                  this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
+                }
               }
             }
           }
         }
+      });
+
+      quill.on('text-change', () => {
+        content.value = quill.root.innerHTML;
+      });
+
+      if(data.post._id) {
+        quill.root.innerHTML = data.post.content;
+        imagePreview.src = `/post/${data.post._id}/image.jpg`;
+        showImages = true;
       }
-    });
+    })();
 
-    quill.on('text-change', () => {
-      content.value = quill.root.innerHTML;
-    });
-
-    if(data.post._id) {
-      quill.root.innerHTML = data.post.content;
-      imagePreview.src = `/post/${data.post._id}/image.jpg`;
-      showImages = true;
-    }
+    return () => {
+      if (quill) {
+        quill.off('text-change');
+      }
+    };
   });
 
   const openCreateTopicDialog = () => {
@@ -93,8 +103,6 @@
     invalidateAll();
 
     closeTopicDialog();
-
-    save = false;
   }
 
   const uploadImage = async () => {
