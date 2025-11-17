@@ -1,38 +1,43 @@
-# sv
+# ben-knox.com
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Hello! This is the repository for my personal website and blog, a project I've been wanting to build for quite some time. It's my space to document my software development journey and contribute back to the community that's given me so much knowledge over the years.
 
-## Creating a project
+## About This Project
 
-If you're seeing this, you've probably already done this step. Congrats!
+This website is built with SvelteKit and serves as both my personal blog and knowledge base. I originally designed it in Figma over a year before launch (you can see the [original design here](https://www.figma.com/design/SCC4WOWbWyoPO0DKD5GEBw/ben-knox.com?node-id=0-1&t=wklsaIBbuKVvDRUl-1)), and it's finally come to fruition 🍇.
 
-```bash
-# create a new project in the current directory
-npx sv create
+The main goal is simple: share knowledge, document experiences, and create a personal reference that others can learn from, just as I've learned from countless developers online.
 
-# create a new project in my-app
-npx sv create my-app
-```
+## Tech Stack
 
-## Developing
+- **Framework**: SvelteKit
+- **Language**: JavaScript/TypeScript
+- **Styling**: CSS (custom design system)
+- **Database**: MongoDB
+- **Authentication**: Keycloak (author authentication)
+- **Deployment**: Kubernetes
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## About Me
 
-```bash
-npm run dev
+I've been working in software professionally and personally out of pure passion. I'm particularly interested in website design and web application development. My experience includes PHP, Python, C#, Node.js, React, Angular, Svelte, Next.js, SvelteKit, Docker, Kubernetes, Figma, and Design Systems.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+- **Website**: [ben-knox.com](https://ben-knox.com)
+- **LinkedIn**: [benjaminknox1](https://www.linkedin.com/in/benjaminknox1/)
+- **GitHub**: [benjaminknox](https://github.com/benjaminknox)
+- **Portfolio**: [knox.pro](https://www.knox.pro/)
 
-## Building
+## Why This Repository?
 
-To create a production version of your app:
+This codebase represents my approach to building modern web applications with SvelteKit. I believe everyone has unique experiences to learn from, and I want to make mine available to others. Think of this as my personal knowledge base, open source and ready to reference.
 
-```bash
-npm run build
-```
+## Contact
 
-You can preview the production build with `npm run preview`.
+Feel free to reach out at [ben@knoxes.email](mailto:ben@knoxes.email) if you'd like to discuss web development, design systems, or any topics further!
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Thank You 👋
+
+Thanks for checking out my code. I hope you find something useful here, and please come back to see what I'm working on next!
+
+---
+
+**Note**: This is a personal project and learning resource. Feel free to explore, learn from it, and reach out with any questions!
