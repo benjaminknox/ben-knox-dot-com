@@ -30,8 +30,10 @@ export const actions: Actions = {
 
     body.published = typeof draft === "undefined";
 
-    if(body.published) {
+    if(body.published && !body.publishedDate) {
       body.publishedDate = date;
+    } else if(typeof body.publishedDate === "string") {
+      body.publishedDate = Number(body.publishedDate);
     }
 
     if(image.size > 0) {

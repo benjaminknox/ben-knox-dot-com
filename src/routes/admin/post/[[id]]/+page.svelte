@@ -148,6 +148,9 @@
   <image class:showImages class="image-preview" bind:this={imagePreview} />
 
   <form method="POST" use:enhance={onSubmit} enctype="multipart/form-data">
+    {#if data.post.publishedDate}
+      <input type="hidden" name="publishedDate" value={data.post.publishedDate} />
+    {/if}
     {#if data.post._id}
       <input type="hidden" name="_id" value={data.post._id} />
     {/if}
