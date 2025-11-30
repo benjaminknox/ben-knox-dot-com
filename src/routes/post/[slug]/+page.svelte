@@ -32,6 +32,7 @@
 </script>
 
 <svelte:head>
+  <title>{data.post.title} | Ben Knox</title>
   <meta property="og:title" content={data.post.title}>
   <meta property="og:image" content={`${page.url.origin}/post/${data.post._id}/image.jpg`}>
   <meta property="og:url" content={`${page.url.origin}/post/${data.post.slug}`}>

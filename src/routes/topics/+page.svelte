@@ -6,6 +6,10 @@
 
 </script>
 
+<svelte:head>
+  <title>All Topics - Modern Software Development Guides | Ben Knox</title>
+</svelte:head>
+
 <Hero bgColor="rgba(95, 117, 137, 0.25)">
   <div class="icon"></div>
   <h1>List of Topics</h1>

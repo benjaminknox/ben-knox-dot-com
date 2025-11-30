@@ -1,3 +1,6 @@
+<svelte:head>
+  <title>About Ben Knox - Software Engineer & Designer</title>
+</svelte:head>
 
 <div class="wrapper">
   <image class="me" src="/me.jpg" />

@@ -8,6 +8,10 @@
   let { posts } = data;
 </script>
 
+<svelte:head>
+  <title>Modern Software Development Guides | Ben Knox</title>
+</svelte:head>
+
 <Hero bgColor="rgba(185, 114, 87, 0.25);">
   <div class="icon"></div>
   <h1>Code With Ben Knox</h1>
