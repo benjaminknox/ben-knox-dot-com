@@ -23,7 +23,7 @@
 </HorizontalRule>
 
 <div class="wrapper">
-  {#each data.topics as topic}
+  {#each data.topicsWithPosts as topic}
     <div class="topic">
       <a href={`/posts?topicFilter=${encodeURIComponent(topic.name)}`}>{topic.name}</a>
     </div>

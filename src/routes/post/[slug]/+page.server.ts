@@ -12,7 +12,7 @@ export const load: PageServerLoad = async ({ params }) => {
 
   let post : any = {};
   let morePosts : any = {};
-  let allPostsInCategory : int = 0;
+  let allPostsInCategory : number = 0;
 
   if(slug) {
     post = await posts.findOne({ $or: [{ slug: slug as any }, { _id: slug as any }] }) as any;

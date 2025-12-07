@@ -10,9 +10,29 @@ export const load: LayoutServerLoad = async ({ cookies, url }) => {
 
 	const client = (await mongoDbClient).db();
 
-	const collection = client.collection('topics');
+  const collection = client.collection("topics")
 
   const topics = await collection.find().toArray();
+
+  console.log(topics)
+
+  const topicsWithPosts = await collection
+  .aggregate([
+    {
+      $lookup: {
+        from: "posts",
+        localField: "name",
+        foreignField: "topic",
+        as: "posts"
+      }
+    },
+    { $match: { 
+      posts: { $ne: [] },
+      "posts.published": { $eq: true }
+    } },
+    { $project: { _id: 0, name: 1 } }
+  ])
+  .toArray();
 
   if(!session &&
 		(url.pathname.startsWith('/admin/add-post') || url.pathname.startsWith('/admin/posts'))
@@ -24,5 +44,5 @@ export const load: LayoutServerLoad = async ({ cookies, url }) => {
       throw redirect(302, "/admin/posts");
     }
 
-  return { authenticated : !!session, topics};
+  return { authenticated : !!session, topics, topicsWithPosts};
 };

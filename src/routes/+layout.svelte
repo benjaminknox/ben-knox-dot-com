@@ -271,7 +271,7 @@
       <section>
         <h6>Topics</h6>
         <div class="topics-list">
-          {#each data.topics as topic}
+          {#each data.topicsWithPosts as topic}
             <a href={`/posts?topicFilter=${encodeURIComponent(topic.name)}`}>{topic.name}</a>
           {/each}
         </div>
