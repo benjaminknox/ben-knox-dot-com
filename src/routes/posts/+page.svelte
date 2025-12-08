@@ -9,7 +9,6 @@
 	let { data } = $props();
 
   let topicFilter = $derived(decodeURIComponent($page.url.searchParams.get("topicFilter") ?? ""));
-  console.log(topicFilter);
 </script>
 
 <svelte:head>

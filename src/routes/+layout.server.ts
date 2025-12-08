@@ -14,8 +14,6 @@ export const load: LayoutServerLoad = async ({ cookies, url }) => {
 
   const topics = await collection.find().toArray();
 
-  console.log(topics)
-
   const topicsWithPosts = await collection
   .aggregate([
     {
