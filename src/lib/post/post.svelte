@@ -22,11 +22,6 @@
 
 <style lang="scss">
   a {
-      @media screen and (max-width: 36rem) {
-        width: 100%;
-        max-width: 34.75rem;
-      }
-
     .post-card {
       width: 13.125rem;
       height: 15.625rem;
@@ -38,10 +33,6 @@
       flex-direction: column;
       cursor: pointer;
       text-decoration: none;
-
-      @media screen and (max-width: 36rem) {
-        width: 100%;
-      }
 
       &:hover {
         background: var(--color-platinum-20);
