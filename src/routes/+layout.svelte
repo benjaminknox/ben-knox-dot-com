@@ -45,10 +45,6 @@
     background: var(--color-platinum);
   }
 
-  :global(*) { /* Reset because I'm pulling in aura which defines this as Roboto */
-    font-family: "Jost", sans-serif !important;
-  }
-
   :global(a, a:hover, a:active, a:visited, a:focus) {
     color: inherit;
     text-decoration: underline;

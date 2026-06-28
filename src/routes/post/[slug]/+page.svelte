@@ -88,6 +88,110 @@
     }
   }
 
+  :global(.post-body .emgithub-file .code-area td.hljs-ln-line) {
+    line-height: 1.25rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+    font-family: 'Nimbus Mono PS', 'Courier New', monospace;
+    font-family: "Geist Mono", monospace;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+
+/* base */
+  :global(.post-body .hljs-style-default .hljs) {
+    background: var(--color-platinum);
+    color: var(--color-raisin-black);
+  }
+
+  /* comments */
+  :global(.post-body .hljs-style-default .hljs-comment) {
+    color: var(--color-paynes-gray);
+  }
+
+  /* punctuation & tags */
+  :global(.post-body .hljs-style-default .hljs-punctuation),
+  :global(.post-body .hljs-style-default .hljs-tag) {
+    color: var(--color-onyx);
+  }
+
+  :global(.post-body .hljs-style-default .hljs-tag .hljs-attr),
+  :global(.post-body .hljs-style-default .hljs-tag .hljs-name) {
+    color: var(--color-raisin-black);
+  }
+
+  /* keywords / structural — weight only */
+  :global(.post-body .hljs-style-default .hljs-attribute),
+  :global(.post-body .hljs-style-default .hljs-doctag),
+  :global(.post-body .hljs-style-default .hljs-keyword),
+  :global(.post-body .hljs-style-default .hljs-meta .hljs-keyword),
+  :global(.post-body .hljs-style-default .hljs-name),
+  :global(.post-body .hljs-style-default .hljs-selector-tag) {
+    font-weight: 700;
+  }
+
+  /* strings, numbers, types — warm accent */
+  :global(.post-body .hljs-style-default .hljs-deletion),
+  :global(.post-body .hljs-style-default .hljs-number),
+  :global(.post-body .hljs-style-default .hljs-quote),
+  :global(.post-body .hljs-style-default .hljs-selector-class),
+  :global(.post-body .hljs-style-default .hljs-selector-id),
+  :global(.post-body .hljs-style-default .hljs-string),
+  :global(.post-body .hljs-style-default .hljs-template-tag),
+  :global(.post-body .hljs-style-default .hljs-type) {
+    color: var(--color-brown-sugar);
+  }
+
+  /* sections & titles */
+  :global(.post-body .hljs-style-default .hljs-section),
+  :global(.post-body .hljs-style-default .hljs-title) {
+    color: var(--color-brown-sugar);
+    font-weight: 700;
+  }
+
+  /* variables, operators, symbols — cool accent */
+  :global(.post-body .hljs-style-default .hljs-link),
+  :global(.post-body .hljs-style-default .hljs-operator),
+  :global(.post-body .hljs-style-default .hljs-regexp),
+  :global(.post-body .hljs-style-default .hljs-selector-attr),
+  :global(.post-body .hljs-style-default .hljs-selector-pseudo),
+  :global(.post-body .hljs-style-default .hljs-symbol),
+  :global(.post-body .hljs-style-default .hljs-template-variable),
+  :global(.post-body .hljs-style-default .hljs-variable) {
+    color: var(--color-slate-gray);
+  }
+
+  /* literals — green family → dark warm */
+  :global(.post-body .hljs-style-default .hljs-literal) {
+    color: var(--color-licorice);
+  }
+
+  /* additions, built-ins — green family → dark warm */
+  :global(.post-body .hljs-style-default .hljs-addition),
+  :global(.post-body .hljs-style-default .hljs-built_in),
+  :global(.post-body .hljs-style-default .hljs-bullet),
+  :global(.post-body .hljs-style-default .hljs-code) {
+    color: var(--color-licorice);
+  }
+
+  /* meta */
+  :global(.post-body .hljs-style-default .hljs-meta) {
+    color: var(--color-slate-gray);
+  }
+
+  :global(.post-body .hljs-style-default .hljs-meta .hljs-string) {
+    color: var(--color-slate-gray);
+  }
+
+  /* text styles */
+  :global(.post-body .hljs-style-default .hljs-emphasis) {
+    font-style: italic;
+  }
+
+  :global(.post-body .hljs-style-default .hljs-strong) {
+    font-weight: 700;
+  }
+
   .wrapper {
     display: flex;
     flex-direction: column;
