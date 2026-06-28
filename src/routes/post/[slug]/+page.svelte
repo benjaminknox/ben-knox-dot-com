@@ -127,7 +127,7 @@
   :global(.post-body .hljs-style-default .hljs-meta .hljs-keyword),
   :global(.post-body .hljs-style-default .hljs-name),
   :global(.post-body .hljs-style-default .hljs-selector-tag) {
-    font-weight: 700;
+    font-weight: 500;
   }
 
   /* strings, numbers, types — warm accent */
@@ -146,7 +146,7 @@
   :global(.post-body .hljs-style-default .hljs-section),
   :global(.post-body .hljs-style-default .hljs-title) {
     color: var(--color-brown-sugar);
-    font-weight: 700;
+    font-weight: 500;
   }
 
   /* variables, operators, symbols — cool accent */
@@ -189,7 +189,7 @@
   }
 
   :global(.post-body .hljs-style-default .hljs-strong) {
-    font-weight: 700;
+    font-weight: 600;
   }
 
   .wrapper {
